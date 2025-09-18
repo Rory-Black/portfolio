@@ -1,0 +1,60 @@
+/* Global */
+body {
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(33, 33, 33);
+  color: white;
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(to right, #6f0077, #320083);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.contact {
+  background: rgb(38, 38, 38);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+
+
+
+/* CSS (put in your style.css) */
+.transition-img {
+  cursor: pointer;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* clone (animated image) */
+.transition-clone {
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 2000ms cubic-bezier(.22,.9,.36,1), opacity 2000ms ease;
+  transform-origin: center center;
+  position: fixed;
+  z-index: 10001; /* on top of overlay */
+}
+
+/* full-screen overlay that fades in to mask the page */
+.transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;            /* fallback; will override dynamically */
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;               /* under the clone, above page content */
+  transition: opacity 700ms ease;
+}
+
+.transition-fade {
+  transition: opacity 0.5s ease;
+}
+html.is-animating .transition-fade {
+  opacity: 0;
+}
