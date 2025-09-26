@@ -1,0 +1,22 @@
+/* MNIST Stuff */
+.mnist-body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("/mnist/mnist_image.gif") center/cover no-repeat;
+  position: relative;
+}
+
+.mnist-body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(33, 33, 33, 0.5); /* 50% black overlay */
+  pointer-events: none;  /* let clicks pass through */
+  z-index: -1;           /* keep it behind your content */
+}
+
+.card{
+  background-color: rgb(51, 51, 51);
+  color: white;
+  margin: 20px;
+}

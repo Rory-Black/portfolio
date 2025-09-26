@@ -1,4 +1,10 @@
 /* Global */
+
+:root {
+  --transition-duration: 700ms;   /* change here to speed/slow down */
+  --overlay-color: #ffffff;       /* change to match destination background */
+}
+
 body {
   scroll-behavior: smooth;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,35 +27,43 @@ body {
   text-align: center;
 }
 
-
-
+.overlay-img{
+  position: absolute;
+  top: 50%;   /* adjust vertical position */
+  right: 70%;  /* adjust horizontal position */
+}
 
 /* CSS (put in your style.css) */
 .transition-img {
   cursor: pointer;
   display: inline-block;
   will-change: transform, opacity;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
-/* clone (animated image) */
+.transition-img:hover{
+  transform: scale(1.1);
+}
+
 .transition-clone {
   pointer-events: none;
   will-change: transform, opacity;
-  transition: transform 2000ms cubic-bezier(.22,.9,.36,1), opacity 2000ms ease;
+  transition: transform var(--transition-duration) cubic-bezier(.22,.9,.36,1),
+              opacity 1400ms ease;
   transform-origin: center center;
   position: fixed;
   z-index: 10001; /* on top of overlay */
 }
 
-/* full-screen overlay that fades in to mask the page */
 .transition-overlay {
   position: fixed;
   inset: 0;
-  background: white;            /* fallback; will override dynamically */
+  background: var(--overlay-color);
   opacity: 0;
   pointer-events: none;
-  z-index: 10000;               /* under the clone, above page content */
-  transition: opacity 700ms ease;
+  z-index: 10000; /* under the clone, above page content */
+  transition: opacity var(--transition-duration) ease;
 }
 
 .transition-fade {
