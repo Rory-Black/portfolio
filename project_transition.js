@@ -105,19 +105,19 @@
         clone.removeEventListener('transitionend', onEnd);
         overlay.removeEventListener('transitionend', onEnd);
       }
-      // clone.addEventListener('transitionend', onEnd);
-      // overlay.addEventListener('transitionend', onEnd);
+      clone.addEventListener('transitionend', onEnd);
+      overlay.addEventListener('transitionend', onEnd);
 
       // safety timeout (duration + cushion)
       setTimeout(() => {
-        // cleanup();
-        // resolve();
+        cleanup();
+        resolve();
       }, duration + 120);
     });
 
     // remove animated nodes and navigate
-    // try { clone.remove(); } catch (err) { /* noop */ }
-    // try { overlay.remove(); } catch (err) { /* noop */ }
+    try { clone.remove(); } catch (err) { /* noop */ }
+    try { overlay.remove(); } catch (err) { /* noop */ }
 
     // If you're using fetch-injection SPA behavior, replace this with your loader:
     // await loadPageIntoMainContent(href);
